@@ -1,12 +1,12 @@
-class  Player {
-  constructor(x,y,ctx) {
+class Player {
+  constructor(x, y, ctx) {
     this.x = x;
     this.y = y;
-	  this.dir = 0;
-	  this.rot = 0;
-	  this.speed = 0;
-	  this.moveSpeed = 0.18;
-	  this.rotSpeed = 6 * Math.PI / 180;
+    this.dir = 0;
+    this.rot = 0;
+    this.speed = 0;
+    this.moveSpeed = 0.18;
+    this.rotSpeed = 6 * Math.PI / 180;
     this.ctx = ctx;
     this.miniMapScale = 8;
     this.yOffset = 200;
@@ -30,19 +30,21 @@ class  Player {
 
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.x + 4 + this.xOffset , this.y + 4 + this.yOffset );
-    this.ctx.lineTo(xLine + 4 + this.xOffset , yLine + 4 + this.yOffset );
+    this.ctx.moveTo(this.x + 4 + this.xOffset, this.y + 4 + this.yOffset);
+    this.ctx.lineTo(xLine + 4 + this.xOffset, yLine + 4 + this.yOffset);
     this.ctx.strokeStyle = "red";
     this.ctx.stroke();
 
 
     this.ctx.fillStyle = "black";
     this.ctx.fillRect(
-      this.x + this.xOffset ,
+      this.x + this.xOffset,
       this.y + this.yOffset,
       this.miniMapScale,
       this.miniMapScale);
   }
 }
 
-export {Player}
+export {
+  Player
+}
