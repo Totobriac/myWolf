@@ -23,6 +23,12 @@ class Map {
       }
     }
   }
+  colision(x, y) {
+    var hit = false;
+    if (this.bluePrint[y][x] != 0)
+      hit = true;
+    return hit;
+  }
 }
 
 export {

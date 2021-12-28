@@ -21,7 +21,7 @@ class Player {
     var newX = this.x + Math.cos(this.rot) * moveStep;
     var newY = this.y + Math.sin(this.rot) * moveStep;
 
-    var canMove = this.collisonChecker(newX, newY);
+    var canMove = this.colision(newX, newY);
 
     if (canMove === true) {
       this.x = newX;
@@ -48,28 +48,15 @@ class Player {
       this.miniMapScale,
       this.miniMapScale);
   }
-  collisonChecker(x, y) {
-    var angle = normalizeAngle(this.rot);
-
-    var direction;
-    var nextTile;
-
-    angle >= 0 && angle < Math.PI ? direction = "down" : direction = "up";
-
-    direction === "up" ? nextTile = this.map.bluePrint[Math.floor(y/8)][Math.floor(x/8)] : nextTile = this.map.bluePrint[Math.ceil(y/8)][Math.ceil(x/8)];;
-
-    var canGo;
-    nextTile != 0 ? canGo = false : canGo = true;
-    return canGo
+  colision(x, y) {
+    console.log(x,y)
+    var hit = false;
+    var squareX = parseInt(x / this.map.mapWidth);
+    var squareY = parseInt(y / this.map.mapHeight);
+    if (this.map.colision(squareX, squareY))
+      hit = true;
+    return hit;
   }
-}
-
-function normalizeAngle(angle) {
-  angle = angle % (2 * Math.PI);
-  if (angle < 0) {
-    angle = (2 * Math.PI) + angle;
-  }
-  return angle;
 }
 
 export {
